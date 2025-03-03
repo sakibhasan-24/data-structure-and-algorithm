@@ -39,3 +39,22 @@ int main (){
     Node *head=new Node (10);
 }
 ```
+
+## it's a very simple linked list we have created.
+
+- Head means very first node in the list.
+- actually we are perform almost everything in the head.
+- Head (10) it means Our first Node,it a beautiful **box** .it's indicate that inside box value is **10** and
+  pointing second box is for now **null**
+
+## Operation we perform in linked list
+
+    -insert
+        ### head
+        ### middle
+        ### tail
+    - delete
+        ### head
+        ### middle
+        ### tail
+    - search
