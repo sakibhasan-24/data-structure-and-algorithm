@@ -64,3 +64,38 @@ int main (){
 ### 3. Searching
 
 - Search for a specific value in the linked list.
+
+## 1. Insertion
+
+#### 1. Insert a node in the start of the list ,or we can say head
+
+we will insert a node at the head of the list.E:G.initially linked list is 10,we will insert 12 at start position.
+
+##### before that let's learn **traverse** a linked list.
+
+## already we know (almost) we work on head.
+
+Assume we have already a linked list **12->34->89->1->78** and we will print **12 34 89 1 78** .
+
+Our **head** poiniting 12 , then we need to go 34 ,and so on until 78.
+**Box** contains **12 /next location**
+after print 12 ,assign 34 as **head** and print and so on until head is null.
+
+# code
+
+```cpp
+void print (Node* head){
+    //1 if head is null
+    if (head == NULL) return;
+    if(head->next == NULL) cout<<head->next;
+    // but we need to go 34 ,and so on until head is null
+    //until head is null
+    while (head!=NULL){
+    cout<<head->data <<" "; //we print the head,then pass the head
+    head =head->next;
+    }
+
+
+}
+
+```
