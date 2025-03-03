@@ -47,14 +47,20 @@ int main (){
 - Head (10) it means Our first Node,it a beautiful **box** .it's indicate that inside box value is **10** and
   pointing second box is for now **null**
 
-## Operation we perform in linked list
+## Operations Performed in Linked List
 
-    -insert
-        ### head
-        ### middle
-        ### tail
-    - delete
-        ### head
-        ### middle
-        ### tail
-    - search
+### 1. Insertion
+
+- **At Head** – Insert a node at the beginning.
+- **At Middle** – Insert a node at a specific position.
+- **At Tail** – Insert a node at the end.
+
+### 2. Deletion
+
+- **From Head** – Remove the first node.
+- **From Middle** – Remove a node from a specific position.
+- **From Tail** – Remove the last node.
+
+### 3. Searching
+
+- Search for a specific value in the linked list.
