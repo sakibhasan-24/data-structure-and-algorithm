@@ -17,3 +17,25 @@ struct Node {
     Node* next;  // This is called a self-referential property
 };
 ```
+
+## also we can use class
+
+```cpp
+class Node {
+        public:
+    int value;
+    Node* next;  // This is called a self-referential property
+
+    Node (int data){
+        value = data;
+        next=null
+    }
+
+
+};
+
+// lets creat a linked list
+int main (){
+    Node *head=new Node (10);
+}
+```
