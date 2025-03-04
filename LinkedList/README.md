@@ -171,6 +171,16 @@ it's all about moving the pointer next.
 
 let's write the code.
 
+- **Pointer Adjustments:**
+- `newNode->next = temp->next;` (100 should point to 5)
+- `temp->next = newNode;` (89 should now point to 100)
+
+**It’s all about correctly updating the `next` pointers!**
+
+---
+
+## Code Implementation
+
 ```cpp
 
 
