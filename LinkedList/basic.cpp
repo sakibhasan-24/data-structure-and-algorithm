@@ -51,14 +51,44 @@ void insertAtBottom(Node* &head,int value){
     temp->next=newNode;
     // newNode->next=NULL;
 }
+
+
+void insertAtPosition(Node * &head,int value,int position){
+    //if head is NULL
+    if(head==NULL){
+        Node *newNode = new Node(value);
+        newNode->next=head;
+        head=newNode;
+        return;
+    }
+    if(position==1){
+        Node *newNode=new Node(value);
+        newNode->next=head;
+        head=newNode;
+        return;
+    }
+    int count=1;
+    Node *temp=head;
+    while(temp->next!=NULL && count< (position-1)){
+        temp=temp->next;
+        count++;
+    }
+    Node *newNode=new Node(value); 
+    newNode->next=temp->next; 
+    temp->next=newNode;  
+
+}
 int main() {
-    Node *head= new Node(100);
-    insertAtTop(head,200);
-    insertAtTop(head,300);
-    insertAtTop(head,400);
-    insertAtTop(head,500);
-    insertAtTop(head,0);
-    insertAtBottom(head,6);
-    // cout<<head->data<<endl;
+    // Node *head= new Node(100);
+    // insertAtTop(head,200);
+    // insertAtTop(head,300);
+    // insertAtTop(head,400);
+    // insertAtTop(head,500);
+    // insertAtTop(head,0);
+    // insertAtBottom(head,6);
+    Node *head;
+    insertAtPosition(head,7,1);
+    insertAtPosition(head,8,1);
+   
     print(head);
 }

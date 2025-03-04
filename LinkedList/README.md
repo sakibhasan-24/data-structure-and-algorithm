@@ -143,8 +143,61 @@ We will insert a new node at the end of the list.e:g:12->34->42->? Now we will a
         head=new Node(value);
         return;
     }
+    Node *temp = head;
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
     Node *newNode = new Node(value);
     temp->next=newNode;
 
  }
+```
+
+# Let's learn insert At Your favourite position.
+
+1.may be head is null
+2.may be insert at position 1.(head is null and insert at position 1 both is same 😂)
+
+### N.B:we assume linked list is 1 based
+
+for insert at position 1 ,it means insert at head,So,its simple,create a new node,**newNode next will point head** and head will be new Node.
+
+Now for most interesting part,if we want insert at particular position,eg: **23->89->5->12->1->Null** we want to insert at postion **3** and the value will be **100**.
+
+What we will do?
+Now at position 3 ,here value is 5 and it's next pointing to 12 and its previous value 89 ,it's next poinitng 5.Our Goal is **23->89->100->5->12->1->Null**.
+So, Now new Node is 100,new Node's next will poinitng 5(before it was(5) pointed by 89).and 89's next will pointing 100(before 89 pointing 5)
+it's all about moving the pointer next.
+
+let's write the code.
+
+```cpp
+
+
+
+ void insertAtPosition(Node * &head,int value,int position){
+    //if head is NULL
+    if(head==NULL){
+        Node *newNode = new Node(value);
+        newNode->next=head;
+        head=newNode;
+        return;
+    }
+    if(position==1){
+        Node *newNode=new Node(value);
+        newNode->next=head;
+        head=newNode;
+        return;
+    }
+    int count=1;
+    Node *temp=head;
+    while(temp->next!=NULL && count< (position-1)){
+        temp=temp->next;
+        count++;
+    }
+    Node *newNode=new Node(value);
+    newNode->next=temp->next;
+    temp->next=newNode;
+
+}
 ```
