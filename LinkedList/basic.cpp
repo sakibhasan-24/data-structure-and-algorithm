@@ -78,17 +78,67 @@ void insertAtPosition(Node * &head,int value,int position){
     temp->next=newNode;  
 
 }
+
+
+// delete from head
+
+void deleteFromHead(Node* &head){
+    if (head==NULL) {
+        cout<<"List is empty, cannot delete from head."<<endl;
+        return;
+    }
+    if(head && head->next==NULL){
+        cout<<"Only we have head "<<endl;
+        delete head;
+        head=NULL;
+        return ;
+    }
+    Node *temp=head;
+    head=head->next;
+    delete temp;
+}
+
+void deleteFromTail (Node* &head){
+    if(head==NULL){
+        cout<<"List is empty, cannot delete from tail."<<endl;
+        return;
+    }
+    if(head->next==NULL){
+        cout<<"Only we have head "<<endl;
+        delete head;
+        head=NULL;
+        return;
+    }
+    //1-2-3-4-5-6
+    cout<<"Hitted"<<endl;
+    Node *temp=head;
+    while(temp->next->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next=NULL;
+    delete temp->next;
+}
 int main() {
     // Node *head= new Node(100);
     // insertAtTop(head,200);
-    // insertAtTop(head,300);
-    // insertAtTop(head,400);
-    // insertAtTop(head,500);
+    
     // insertAtTop(head,0);
     // insertAtBottom(head,6);
     Node *head;
     insertAtPosition(head,7,1);
-    insertAtPosition(head,8,1);
+    insertAtTop(head,300);
+    insertAtTop(head,400);
+    insertAtTop(head,500);
+    // insertAtPosition(head,8,1);
+    // deleteFromHead(head);
+    // deleteFromHead(head);
+    // deleteFromHead(head);
+    // deleteFromHead(head);
+    deleteFromTail(head);
+    deleteFromTail(head);
+    deleteFromTail(head);
+    deleteFromTail(head);
+    deleteFromTail(head);
    
     print(head);
 }
