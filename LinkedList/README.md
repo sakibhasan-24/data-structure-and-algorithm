@@ -232,3 +232,12 @@ Now we can also follow,delete the from head,tail and giving index.
 - `A->B->C->D->E->F->null` So,we will create a temp variable.it will point head.
 - **A is Now head,and also our temp** .We will delete **F** and also need to ensure **E** pointing NULL.
 - We will Move with temp.Temp will stop at **E** .**temp->next is F,we will Do two things,temp->next will assign as NULL and temp->next will be deleted**.
+
+- **Delete From Position:**
+- Head is null ,nothing to delete here.
+- Only head is single node.so just delete the head.
+- Now we have a list of nodes.
+- `we don't want to lose our head reference` So,we will create a temp variable.it will point head.
+- `A->B->C->D->E->F->null` So,we will create a temp variable.it will point head.
+- **A is Now head,and also our temp** .We will delete **C** .
+- We will Move with temp.Temp will stop at **B** .**temp->next is C,we will Do two things, temp->next=temp->next->next;will delete and temp->next will be deleted**.

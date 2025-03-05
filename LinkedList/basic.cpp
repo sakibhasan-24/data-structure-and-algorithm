@@ -118,6 +118,32 @@ void deleteFromTail (Node* &head){
     temp->next=NULL;
     delete temp->next;
 }
+
+void deleteFromPosition(Node * &head,int position){
+    if(head==NULL){
+        cout<<"List is empty, cannot delete from position."<<endl;
+        return;
+    }
+    if(position==1){
+        Node *temp=head;
+        head=temp->next;
+        delete temp;
+        return;
+    }
+    //A->B->C->D->E->F->NULL ,we will delete index 3 ,which is C.new result will be A->B->D->E->F->NULL
+    Node *temp=head;
+    int count=1;
+    while(temp->next!=NULL && count<position-1){
+        temp=temp->next;
+        count++;
+    }
+    if(temp->next==NULL){
+        cout<<"Index out of range. Cannot delete from position."<<endl;
+        return;
+    }
+    temp->next=temp->next->next;
+    delete temp->next;
+}
 int main() {
     // Node *head= new Node(100);
     // insertAtTop(head,200);
@@ -129,16 +155,24 @@ int main() {
     insertAtTop(head,300);
     insertAtTop(head,400);
     insertAtTop(head,500);
+    insertAtTop(head,600);
+    insertAtTop(head,700);
     // insertAtPosition(head,8,1);
     // deleteFromHead(head);
     // deleteFromHead(head);
     // deleteFromHead(head);
     // deleteFromHead(head);
-    deleteFromTail(head);
-    deleteFromTail(head);
-    deleteFromTail(head);
-    deleteFromTail(head);
-    deleteFromTail(head);
+    // deleteFromTail(head);
+    // deleteFromTail(head);
+    // deleteFromTail(head);
+    // deleteFromTail(head);
+    // deleteFromTail(head);
+    deleteFromPosition(head,3);
+    deleteFromPosition(head,30);
+    // deleteFromPosition(head,1);
+    // deleteFromPosition(head,2);
+    // deleteFromPosition(head,3);
+    // deleteFromPosition(head,1);
    
     print(head);
 }
