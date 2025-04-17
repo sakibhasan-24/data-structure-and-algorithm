@@ -57,6 +57,50 @@ void insertAtEnd(Node* &head,int value){
 
 }
 
+void insertAtPosition(Node * &head,int value,int position){
+    //A->B->C->D->F
+    //i want to insert E after D.So position is 5(1 based)
+    Node *temp=head;
+    // if head is NULL
+        if(head==NULL){
+            Node *newNode=new Node(value);
+            head=newNode;
+            return;
+        }
+     //A->B->C->D->NULL ,we will insert S at position One,new list will be S->A->B->C->D->NULL
+     
+    if(position==1){
+        Node *newNode=new Node(value);
+        newNode->next=head;
+        newNode->prev=NULL;
+       if(head!=NULL) {
+        head->prev=newNode;
+       }
+        head=newNode;
+        return;
+    }
+
+    //Now Game is On,We need detect position
+    int count=1;
+    while(temp!=NULL && count<(position-1)){
+        temp=temp->next;
+        count++;
+    }
+    if(temp==NULL) {
+        cout<<position<< " is out of Bound!"<<endl;
+        return;
+    }
+        Node *newNode=new Node(value);
+        //A->B->D->E->NULL
+        //insert C at position 3
+        //temp is Now B
+        newNode->next=temp->next;
+        newNode->prev=temp;
+        if(temp->next!=NULL){
+            temp->next->prev=newNode;
+        }
+        temp->next=newNode;
+}
 int main ()
 
 
@@ -67,7 +111,9 @@ int main ()
     insertAtTop(head,101);
     insertAtTop(head,102);
     insertAtTop(head,103);
-    insertAtEnd(head,2000);
+    // insertAtEnd(head,);
+    insertAtPosition(head,200,1);
+
     
     print(head);
     return 0;
