@@ -85,12 +85,10 @@ int root(int id) {
 void unionNode(int p, int q) {
     int rootp = root(p);
     int rootq = root(q);
-
     if (rootp == rootq) {
         cout << "They are already connected!!" << endl;
         return;
     }
-
     if (r[rootp] < r[rootq]) {
         parent[rootp] = rootq;
     } else if (r[rootp] > r[rootq]) {
