@@ -118,3 +118,7 @@ int main ()
     print(head);
     return 0;
 }
+
+
+//Linked List has a beauty,it's just connected each other,you need to remember Head ,
+//You need to focus how you connect next or prev
