@@ -84,7 +84,7 @@ int root(int id) {
 // Union by r
 void unionNode(int p, int q) {
     int rootp = root(p);
-    int rootq = root(q);
+    int rootq = root(q);   
     if (rootp == rootq) {
         cout << "They are already connected!!" << endl;
         return;

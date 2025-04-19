@@ -113,8 +113,6 @@ int main ()
     insertAtTop(head,103);
     // insertAtEnd(head,);
     insertAtPosition(head,200,1);
-
-    
     print(head);
     return 0;
 }
