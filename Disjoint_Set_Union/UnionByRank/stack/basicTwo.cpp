@@ -1,4 +1,5 @@
 #include<iostream>
+#include<optional>
 using namespace std;
 
 class Node {
@@ -20,6 +21,10 @@ class Stack {
             top=NULL;
             size=0;
         }
+
+        bool isEmpty(){
+            return top==NULL;
+        }
         //top=NULL,
         //temp->next will point this NULL
         //20->NULL
@@ -36,10 +41,24 @@ class Stack {
                 cout<<"Stack is Empty!"<<endl;
                 return;
             }
+            // if(isEmpty()){
+            //     cout<<"Stack is Empty!"<<endl;
+            //     return;
+            // }
             Node *temp=top;
             top=top->next;
             size--;
             delete temp;
+        }
+
+        
+        optional<int> peek(){
+            if (top==NULL) {
+                cout<<"Stack is NULL !"<<endl;
+                return nullopt;
+            }else {
+                return top->data;
+            }
         }
     
 
@@ -51,7 +70,22 @@ int main ()
 
 {
     Stack s;
-    s.push(10);
-    s.pop();
+
+auto top = s.peek(); 
+
+if (top.has_value()) {
+    cout << "Top value is: " << top.value() << endl;
+} else {
+    cout << "Stack is empty!" << endl;
+}
+
+s.push(10);
+
+top = s.peek();  
+
+if (top.has_value()) {
+    cout << "Now top value is: " << top.value() << endl;
+}
+
 
 }
