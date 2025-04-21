@@ -36,7 +36,9 @@ class Queue{
             front=rear=0;
             arr[front]=value;
         }else {
-            rear++;
+            // rear++;
+            // make it circular
+            rear=(rear+1)%size;
             arr[rear]=value;
         }
 
@@ -49,7 +51,9 @@ class Queue{
         else if(rear==front){
             rear=front=-1;
         }else {
-            front=front+1;
+            // front=front+1;
+            // make it circular
+            front=(front+1)%size;
         }
     }
 };
