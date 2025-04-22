@@ -50,4 +50,8 @@ int main()
 
 {
 
+    Queue q1;
+    bool c=q1.isEmpty();
+    cout<<c<<endl;
+
 }
