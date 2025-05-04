@@ -22,6 +22,24 @@ Class Dequeue{
         Dequeue(){
             front=rear=NULL:
         }
+
+        void isEmpty(){
+            if(front==NULL) return true;
+        }
+        //1->null
+        void push_front(int x){
+            if(isEmpty()){
+                Node newNode=new Node(x);
+                front=newNode;
+                rear=newNode;
+            }else {
+                Node newNode=new Node(x);
+                newNode->next=front;
+                front->prev=newNode;
+                front=newNode;
+                return;
+            }
+        }
 };
 
 int main()
