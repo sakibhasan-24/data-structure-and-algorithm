@@ -32,6 +32,7 @@ Class Dequeue{
                 Node newNode=new Node(x);
                 front=newNode;
                 rear=newNode;
+                return;
             }else {
                 Node newNode=new Node(x);
                 newNode->next=front;
@@ -40,6 +41,21 @@ Class Dequeue{
                 return;
             }
         }
+        void push_back(int x){
+            //1-2-3-null
+            if(isEmpty()){
+                Node newNode=new Node(x);
+                front=rear=newNode;
+                return;
+            }else {
+                Node newNode=new Node(x);
+                rear->next=newNode;
+                newNode->prev=rear;
+                rear=newNode;
+                return;
+            }
+        }
+
 };
 
 int main()
