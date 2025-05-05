@@ -29,7 +29,7 @@ Class Dequeue{
         //1->null
         void push_front(int x){
             if(isEmpty()){
-                Node newNode=new Node(x);
+                Node* newNode=new Node(x);
                 front=newNode;
                 rear=newNode;
                 return;
@@ -44,7 +44,7 @@ Class Dequeue{
         void push_back(int x){
             //1-2-3-null
             if(isEmpty()){
-                Node newNode=new Node(x);
+                Node* newNode=new Node(x);
                 front=rear=newNode;
                 return;
             }else {
