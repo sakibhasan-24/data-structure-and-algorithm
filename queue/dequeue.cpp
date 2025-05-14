@@ -56,6 +56,18 @@ Class Dequeue{
             }
         }
 
+        void pop_back(){
+            if(isEmpty()){
+                cout<<"Queue is Empty!"<<endl;
+            }else {
+                //1-2-3-null
+                Node *temp=rear;
+                rear=temp->prev;
+                temp->prev=rear;
+                delete temp;
+            }
+        }
+
 };
 
 int main()
