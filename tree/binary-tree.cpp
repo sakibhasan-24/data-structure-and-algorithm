@@ -79,6 +79,85 @@ TreeNode *createBinaryTreeUsingQueue(){
                 if(node->left) s.push(node->left);
             }
         }
+
+        /* 
+       1
+       / \
+      2   3
+     / \   \
+    4   5   6
+
+        */
+
+        //1 2 3 4 5 6
+
+        void levelOrderTraversal(TreeNode* root){
+            if(root==NULL) return;
+            queue<TreeNode*>s;
+            s.push(root);
+            while(!s.empty()){
+                TreeNode *node=s.front();
+                s.pop();
+                cout<<node->val<<" ";
+                if(node->left) s.push(node->left);
+                if(node->right) s.push(node->right);       
+                       
+            }
+        }
+
+
+        bool isCCousin(TreeNode *root,int x,int y){
+            //same level
+            //different parent
+              //     1
+    //    / \
+    //   2   3
+    //  /     \
+    // 4       5
+            if(root==NULL) return false;
+
+            queue<TreeNode*>s;
+            s.push(root);
+  
+
+    while(!q.empty()){
+        int size=q.size();
+        TreeNode *parentA=nullptr;
+        TreeNode *parentB=nullptr;
+        for(int i=0;i<size;i++){
+            
+             TreeNode *node=q.front();
+             q.pop();
+             if(node->left){
+                if(node->left->val==x){
+                    parentA=node;
+                }
+                if(node->left->val==y){
+                    parentB=node;
+                }
+                q.push(node->left);
+             }
+             if(node->right){
+                if(node->right->val==x){
+                    parentA=node;
+                }
+                if(node->right->val==y){
+                    parentB=node;
+                }
+                q.push(node->right);
+             }
+             
+        }
+        if(parentA && parentB){
+            return parentA!=parentB;
+        }
+        if(parentA || parentB) return false;
+       
+    }
+    return false
+
+
+ }
 int main(){
     TreeNode *root;
     cout<<"Enter the value of the root node: "<<endl;
