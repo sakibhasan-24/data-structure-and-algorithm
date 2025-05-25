@@ -155,8 +155,38 @@ TreeNode *createBinaryTreeUsingQueue(){
        
     }
     return false
-
-
+ }
+ vector<int>inOrderMorris(TreeNode *root){
+    TreeNode* current=root;
+    vector<int>res;
+    while(current!=NULL){
+        //case-1 current has no left
+        if(current->left==NULL){
+            res.push_back(current->val);
+            current=current->right;
+        }
+        /*   
+        */
+        //case-2 current has left
+        else { 
+            TreeNode* tracker=current->left;
+            while(tracker->right!=NULL && tracker->right!=current){
+                tracker=tracker->right;
+            }
+            //case -1=>Not visited yet
+            if(tracker->right==NULL){
+                tracker->right=current;
+                current=current->left;
+            }
+            //case 2=>already visited
+            if(tracker->right==current){
+                tracker->right=NULL;
+                res.push_back(current->val);
+                current=current->right;
+            }
+        }
+    }
+    return ans;
  }
 int main(){
     TreeNode *root;
