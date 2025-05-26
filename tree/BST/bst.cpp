@@ -67,6 +67,43 @@ TreeNode* createBST(TreeNode *root,int val){
     return root;
 
 }
+
+
+/* 
+
+         10
+       /  \
+      5    15
+     / \     \
+    3   7     18
+       / \
+      6   8
+
+*/
+bool isExist(TreeNode*root,int target){
+    if(root==NULL) return false;
+    if(root->val==target) return true;
+
+    TreeNode* current=root;
+    while(current){
+        if(current->val==target) return true;
+        if(target<current->val){
+            //left side
+            if(current->left==NULL){
+                return false;
+            }else {
+                current=current->left;
+            }
+        }else {
+            if(current->right==NULL){
+                return false;
+            }else {
+                current=current->right;
+            }
+        }
+    }
+    return false;
+}
 void inorder(TreeNode* root) {
     if (root == NULL) return;
     inorder(root->left);
@@ -86,6 +123,7 @@ int main ()
     cout << "Inorder traversal of BST: ";
     inorder(root);
     cout << endl;
+    cout<<isExist(root,80)<<endl;
 
     return 0;
 }
