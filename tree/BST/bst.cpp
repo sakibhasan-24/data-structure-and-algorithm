@@ -69,6 +69,18 @@ TreeNode* createBST(TreeNode *root,int val){
 }
 
 
+TreeNode* lowestCommonAncestor(TreeNode* root,TreeNode* p,TreeNode* q) {
+    if (root == NULL) return NULL;
+    if (root->val > p->val && root->val > q->val) {
+        return lowestCommonAncestor(root->left, p, q);
+    }
+    if (root->val < p->val && root->val < q->val) {
+        return lowestCommonAncestor(root->right, p, q);
+    }
+    return root;
+}
+
+
 /* 
 
          10
@@ -109,6 +121,59 @@ void inorder(TreeNode* root) {
     inorder(root->left);
     cout << root->val << " ";
     inorder(root->right);
+}
+/*
+       10
+       /  \
+      5    15
+     / \     \
+    3   7     18
+       / \
+      6   8
+*/
+
+
+TreeNode* deleteBST(TreeNode* root,int target){
+    if(root==NULL) return NULL;
+    // if(!isExist(target)) return ;
+    //delete leaf node
+        if(root->val==target){
+            if(root->left==NULL && root->right==NULL) {
+                delete root; 
+                return NULL; 
+            }
+            if(root->left==NULL){
+                 TreeNode* temp=root->right;
+                delete root;
+                return temp;
+               
+            }
+            if(root->righ==NULL){
+                 TreeNode* temp=root->left;
+                delete root;
+                return temp;
+               
+            }
+            //node with two children
+            TreeNode* successor = root->right;
+            while (successor->left != NULL) {
+                successor = successor->left; 
+            }
+            TreeNode* temp=successor;
+            root->val=successor->val;
+           root->right=deleteBST(root->left,target);
+           return root;
+
+
+        }
+        if(target<root->val){
+            root->left=deleteBST(root->left,target);
+        }
+        if(target>root->val){
+            root->right=deleteBST(root->right,target);
+        }
+        return root;
+
 }
 int main ()
 {
