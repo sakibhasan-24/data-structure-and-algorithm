@@ -42,6 +42,12 @@ void printArray(int arr[],int sizeOfArr){
     }
     cout<<endl;
 }
+void heapSort(int arr[],int sizeOfArr){
+    for(int i=sizeOfArr-1;i>0;i--){
+        swap(arr[0],arr[i]);
+        heapify(arr,0,i);
+    }
+}
 int main()
 {
     int arr[] = {3, 5, 9, 6, 8, 20, 10, 12, 18, 9};
@@ -54,6 +60,8 @@ int main()
     
     cout << "Max Heap: ";
     printArray(arr, sizeOfArr);
-    
+    heapSort(arr,sizeOfArr);
+    cout << "Sort Heap: ";
+    printArray(arr,sizeOfArr);
     return 0;
 }
