@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <vector>
+#include<fstream>
 using namespace std;
 
 
@@ -104,6 +105,9 @@ int main()
     heap.insert(100);
     heap.insert(30);
     heap.insert(90);
-
+    ofstream outfile("new.txt");
+    outfile<<"hello"<<endl;
+    outfile<<" World"<<endl;
+    outfile.close();
     return 0;
 }
