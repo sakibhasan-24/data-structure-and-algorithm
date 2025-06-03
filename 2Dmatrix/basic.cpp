@@ -24,13 +24,35 @@ int main()
         }
         cout << endl;
     }
+    //we have 2 rows and 3 columns
+    //let's add the first row and second row
     //1 2 3
     //4 5 6
+    //5 7 9=>target
 
-    //mat[0][0] = 1+mat[1][0]=1+4=5
-    //mat[0][1] = 2+mat[1][1]=2+5=7
-    //mat[0][2] = 3+mat[1][2]=3+6=9
-    //5 7 9
+    // col[0]+col[1]+col[n];
+    for(int c=0;c<col;c++){
+        int sum=0;
+        for(int r=0;r<row;r++){
+            sum+=matrix[r][c];
+           
+        }
+         cout<<sum<<" ";
+    }    
 
+    cout<<endl;
+    cout<<"The row wise sum: "<<endl;
+    //1 2 4
+    // 4 5 6
+    // output 7 and 15
+   //row is 0,col 0+1+2
+   //row is 1,col 0+1+2
+    for(int r=0;r<row;r++){
+        int sum=0;
+        for(int c=0;c<col;c++){
+            sum+=matrix[r][c];
+        }
+        cout<<sum<<" ";
+    }
      
 }
