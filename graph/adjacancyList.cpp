@@ -49,6 +49,54 @@ void bfs(int start,vector<vector<int>>&adjList){
     }
 
 }
+
+// 0: 1 2
+// 1: 0 2
+// 2: 0 1 3
+// 3: 2
+
+
+void dfs(int start,vector<vector<int>>&adjList){
+    vector<bool> visited(adjList.size(),false);
+    stack<int> s;
+    s.push(start);
+    visited[start] = true;
+    while(!s.empty()){
+        int node=   s.top;s.pop();
+        cout << node << " ";
+        for(int i=adj[node].size()-1;i>=0;i--){
+            if(!visited[adj[node][i]]){
+                visited[adj[node][i]] = true;
+                s.push(adj[node][i]);
+            }
+        }
+    }
+}
+
+
+/* 
+// 0: 1 2
+// 1: 0 2
+// 2: 0 1 3
+// 3: 2
+
+*/
+
+void currectDFS(int start,vector<vector<int>>&adjList){
+    vector<bool>visited(adjList.size(),false);
+    stack<int>s;
+    s.push(start);
+    visited[start]=true;
+    while(!s.empty()){
+        int node=s.top();
+        s.pop();
+        cout << node << " ";
+        //after popping the node, we make it visited
+        visited[node]=true; 
+    }
+}
+
+
 int main()
 
 
