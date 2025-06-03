@@ -54,5 +54,38 @@ int main()
         }
         cout<<sum<<" ";
     }
+
+    cout<<endl;
+    //find diagonal matrix;
+
+    if(row!=col){
+        cout<<"It should be NXN size:(3X3 or 4X4) "<<endl;
+        return -1;
+    }
+    //1 2 3 
+    //4 5 6
+    //7 8 9
+    //output 1 5 9
+    cout<<"Primary Diagonal: "<<endl;
+    cout<<endl;
+    for(int r=0;r<row;r++){
+        for(int c=0;c<col;c++){
+            if(r==c){
+                cout<<matrix[r][c]<<" "; 
+            }
+        }
+    }   
+    cout<<endl;
+    //1 2 3 mat[r=0][col 2]
+    //4 5 6 mat[r=1]col[1]
+    //7 8 9 mat [r=2] col[0]
+    //output 3 5 7 
+     cout<<"Secondary Diagonal: "<<endl; 
      
+     for(int r=0;r<row;r++){
+        int c=col-1-r;
+            cout<<matrix[r][c]<<" "; 
+        
+     } 
+
 }
