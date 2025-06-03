@@ -34,7 +34,6 @@ int main()
         cout << "Enter edges (u v w): ";
         cin >> u >> v >> w;
         adjMatrix[u][v] = w;
-
     }
 
     //n=3 3X3 matrix
