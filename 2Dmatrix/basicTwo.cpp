@@ -1,6 +1,17 @@
 #include<iostream>
 #include<vector>
+#include<climits>
 using namespace std;
+
+pair<int, pair<int, int>> findMaxClickLocation(const vector<vector<int>>& heatmap) {
+    int maxClicks = INT_MIN;
+    pair<int, int> maxPos = {-1, -1};
+    
+
+    return {maxClicks, maxPos};  
+
+}
+
 int main ()
 
 {

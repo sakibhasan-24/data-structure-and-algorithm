@@ -37,6 +37,14 @@ void bfs(int start, vector<vector<int>>& adjList, vector<bool>& visited) {
         }
     }
 }
+
+
+void dfs(int start,vector<vector<int>&adjList,vector<bool>&visited){
+    stack<int>s;
+    s.push(start);
+    visited[start]=true;
+    while(!s.empty())
+}
 int countComponents(int n, vector<vector<int>>& adj) {
     vector<bool>visited(adj.size(),false);
     queue<int>q;
