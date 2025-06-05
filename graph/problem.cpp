@@ -42,8 +42,22 @@ void bfs(int start, vector<vector<int>>& adjList, vector<bool>& visited) {
 void dfs(int start,vector<vector<int>&adjList,vector<bool>&visited){
     stack<int>s;
     s.push(start);
-    visited[start]=true;
-    while(!s.empty())
+    while(!s.empty()){
+        int node=s.top();
+        s.pop();
+      
+        if(!visited[node]){
+            visited[node]=true;
+             cout<<node<<" ";
+
+        }
+         
+        for(int i=0;i<adjList[node].size();i++){
+            if(!visited[adjList[node][i]]){
+                s.push(adjList[node][i]);
+            }
+        }
+    }
 }
 int countComponents(int n, vector<vector<int>>& adj) {
     vector<bool>visited(adj.size(),false);
