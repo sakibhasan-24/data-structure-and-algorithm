@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<stack>
 #include<vector>
 using namespace std;
 
@@ -58,6 +59,85 @@ void bfsInTwoDMatrix(vector<vector<int>>&matrix,int startRow,int startCol){
     
 }
 
+void dfs(vector<vector<int>>&matrix,int startRow,int startCol){
+    int row=matrix.size();
+    // if(row==0) return 0;
+
+    int cols=matrix[0].size();
+    int rowDirections[]={-1,1,0,0};
+    int colDirections[]={0,0,-1,1};
+    // mark all them visited?
+    vector<vector<bool>> visited(row, vector<bool>(cols, false));
+    stack<pair<int,int>> st;
+    visited[startRow][startCol]=true;
+    st.push({startRow,startCol});
+    while(!st.empty()){
+        auto[r,c]=st.top();
+        st.pop();
+        cout<<matrix[r][c]<<" ";
+        for(int i=0;i<4;i++){
+            int newRow=r+rowDirections[i];
+            int newCol=c+colDirections[i];
+            if (newRow >= 0 && newRow < row && newCol >= 0 && newCol < cols) {
+                if (!visited[newRow][newCol]) {
+                    visited[newRow][newCol]=true;
+                    st.push({newRow, newCol});
+                }
+            }
+        }
+    }
+}
+/* 
+
+grid = [
+  ['1','1','0','0','0'],
+  ['1','1','0','0','0'],
+  ['0','0','1','0','0'],
+  ['0','0','0','1','1']
+]
+
+
+*/
+
+int numIslands(vector<vector<char>>& grid) {
+    int row=grid.size();
+    int col=grid[0].size();
+
+     vector<vector<bool>> visited(row, vector<bool>(col, false));
+     queue<pair<int,int>>q;
+
+     int rowDirections[]={-1,1,0,0};
+     int colDirections[]={0,0,1,-1};
+     int count=0;
+     for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            if(!visited[i][j] && grid[i][j]=='1'){
+                count++;
+                q.push({i,j});
+                visited[i][j]=true;
+            
+
+            while(!q.empty()){
+                auto[r,c]=q.front();
+                q.pop();
+                for(int x=0;x<4;x++){
+                    int newRow=r+rowDirections[x];
+                int newCol=c+colDirections[x];
+                if(newRow<row && newRow>=0 && newCol<col && newCol>=0){
+                    if(!visited[newRow][newCol && grid[newRow][newCol]=='1'] ){
+                        visited[newRow][newCol]=true;
+                        q.push({newRow,newCol});
+                    }
+                }
+                }
+            }
+        }
+     }
+    }
+
+     return count;
+}
+
 int main ()
 
 
@@ -94,6 +174,7 @@ int main ()
         {7, 8, 9}
     };
 
-    cout << "BFS Traversal starting from (0,0):\n";
-    bfsInTwoDMatrix(matrix,2,2);
+    cout << "BFS Traversal starting from (2,2):\n";
+    // bfsInTwoDMatrix(matrix,2,2);
+    dfs(matrix,0,0);
 }
