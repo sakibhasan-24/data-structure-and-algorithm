@@ -56,13 +56,14 @@ void bfs(int start,vector<vector<int>>&adjList){
 // 3: 2
 
 
-void dfs(int start,vector<vector<int>>&adjList){
-    vector<bool> visited(adjList.size(),false);
+void dfs(int start,vector<vector<int>>&adj){
+    vector<bool> visited(adj.size(),false);
     stack<int> s;
     s.push(start);
     visited[start] = true;
     while(!s.empty()){
-        int node=   s.top;s.pop();
+        int node=s.top;
+        s.pop();
         cout << node << " ";
         for(int i=adj[node].size()-1;i>=0;i--){
             if(!visited[adj[node][i]]){
@@ -72,7 +73,47 @@ void dfs(int start,vector<vector<int>>&adjList){
         }
     }
 }
+//
+/* 
+    0 1
+    1 0
 
+*/
+ int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+        int row=grid.size();
+        int col=grid[0].size();
+        if(grid[0][0]==1 || grid[row-1][col-1]==1) return -1;
+        queue<pair<int,int>>q;
+        q.push({0,0});
+        vector<vector<bool>>visited(row,vector<bool>(col,false));
+       
+        visited[0][0]=true;
+        int rowDir[] = {-1, -1, -1, 0, 0, 1, 1, 1};
+     int colDir[] = {-1, 0, 1, -1, 1, -1, 0, 1}
+      int res=1;
+        while(!q.empty()){
+            int size=q.size();
+            for(int i=0;i<size;i++){
+                auto[r,c]=q.front();
+                q.pop();
+                if(r=row-1 && c=col-1){
+                    return res;
+                }
+                for(int z=0;z<8;z++){
+                    int nr=r+rowDir[z];
+                    int nc=c+colDir[z];
+                    if(nr>=0 && nr<row && nc>=0 && nc<col){
+                        if(!visited[nr][nc] && grid[nr][nc]==0){
+                            visited[nr][nc]=true;
+                            q.push({nr,nc});
+                        }
+                    }
+                }
+            }
+
+        }
+        return res;
+    }
 
 /* 
 // 0: 1 2

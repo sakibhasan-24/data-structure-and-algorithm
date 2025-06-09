@@ -39,3 +39,53 @@ int numIslands(vector<vector<char>>& grid) {
      return count;
 }
 
+
+/* 
+    2 1 1
+    1 1 0
+    0 1 1
+
+
+*/
+ int orangesRotting(vector<vector<int>>& grid) {
+    int row=grid.size();
+    int col=grid[0].size();
+
+    vector<vector<bool>>visited(row,vector<bool>(col,false));
+    queue<pair<int,int>>q;
+     int rowDirections[]={-1,1,0,0};
+     int colDirections[]={0,0,1,-1};
+     int minutes=0;
+     int fresh=0;
+
+     for(int r=0;r<row;r++){
+        for(int c=0;c<col;c++){
+            if(grid[r][c]==2){
+                q.push({r,c});
+            }else  if (grid[r][c]==1){
+                fresh++;
+            }else {
+                break;
+            }
+        }
+     }
+
+     while(!q.empty() && fresh>0){
+        auto[r,c]=q.front();
+        int size=q.size();
+        q.pop();
+       for(int s=0;s<size;s++){
+         for(int i=0;i<4;i++){
+            int newRow=r+rowDirections[i];
+            int newCol=r+colDirections[i];
+            if(newRow=>0 && newRow<row && newCol>=0 && newCol<col && grid[r][c]==1){
+                grid[newRow][newCol]=2;
+                q.push({newRow,newCol});
+                fresh--;
+            }
+        }
+       }
+        minutes++;
+     }
+     return minutes;
+}
