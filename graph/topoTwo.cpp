@@ -71,8 +71,6 @@ int main()
                 readyToDo.push({nextProcess,steps[nextProcess]});
             }
         }   
-        
-    
     }
 
     //print all task with number and steps
@@ -82,5 +80,5 @@ int main()
         auto[task,step]=courseSerial[i];
         cout<<" task[ "<<task<<" ]"<<" is : "<<step<<endl;
     }
-    
+    cout<<" 🎉 congratulations"<<endl;
 }
