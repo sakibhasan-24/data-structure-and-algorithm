@@ -52,7 +52,7 @@ using namespace std;
     // use recursion to perform DFS and store the finishing order in a stack.
     //later we will use this finishing order to perform DFS on the transposed graph.
 
-    void firstDfs(int node,vector<vector<int>>&adj,vector<bool>&visited,Stack<int>&st){
+    void firstDfs(int node,vector<vector<int>>&adj,vector<bool>&visited,stack<int>&st){
         visited[node]=true;//make the node visited
         //loop through all the neighbors of the node(eg: if node is 0, then loop through adj[0])
         for(int neighbour=0;neighbour<adj[node].size();neighbour++){
@@ -68,6 +68,77 @@ using namespace std;
         st.push(node);
     }
 
+
+    void dfsSecond(int node,vector<vector<int>>&transposedGraph,vector<bool>&transposedVisited,vector<int>& currentSCC){
+        transposedVisited[node]=true;
+        currentSCC.push_back(node);
+        for(int neighbour=0;neighbour<transposedGraph[node].size();neighbour++){
+            int nextNode=transposedGraph[node][neighbour];
+            //if not visited, then perform DFS on the next node
+            //if visited then skip it
+            if(!transposedVisited[nextNode]){
+                dfsSecond(nextNode,transposedGraph,transposedVisited,currentSCC);
+            }
+    }
+}
+vector<vector<int>> findSCCs(int V, vector<vector<int>>& adj) {
+    vector<bool>visited(V, false);
+    stack<int>st;
+    for(int i=0;i<V;i++){
+        if(!visited[i]){
+            //perform DFS on the node i
+            //and store the finishing order in the stack
+            //E:G if i is 0, then perform DFS on node 0 and store the finishing order in the stack
+            //E:G if i is 1, then perform DFS on node 1 and store the finishing order in the stack
+            //E:G if i is 2, then perform DFS on node 2 and store the finishing order in the stack
+            //the order will be like this: 0, 1, 2, 3, 4 
+            firstDfs(i,adj,visited,st);
+
+        }
+
+    }
+    // 1. Now we have the finishing order in the stack.
+    // We will now create a transposed graph. (reverse the direction of all edges in the graph)
+    vector<vector<int>> transposedGraph(V);
+    for(int i=0;i<V;i++){
+        for(int j=0;j<adj[i].size();j++){
+            int nextNode =adj[i][j];
+            //reverse the direction of the edge
+            //E:G if we have an edge from 0 to 1, then we will add an edge from 1 to 0 in the transposed graph
+            transposedGraph[nextNode].push_back(i);//what does it mean?
+            //it means that we are adding an edge from nextNode to i in the transposed graph
+            //E:G if nextNode is 1 and i is 0, then we are adding an edge from 1 to 0 in the transposed graph
+            //its look like  // 0 → 1 becomes 1 → 0 in the transposed graph
+        }
+    }
+    //step 3
+    //perform DFS on the transposed graph
+    vector<vector<int>> sccs;
+    vector<bool>transposedVisited(V, false);
+    while (!st.empty()) {
+        int node = st.top();
+        st.pop();
+
+        if (!transposedVisited[node]) {
+            vector<int> currentSCC;
+            dfsSecond(node, transposedGraph, transposedVisited, currentSCC);
+            sccs.push_back(currentSCC);
+        }
+    }
+
+    return sccs;
+    
+}
+
+    // 2. Transpose the graph.
+    // we will use secondDfs function to perform DFS on the transposed graph.
+    //How to transpose a graph?
+    // To transpose a graph, we need to reverse the direction of all edges in the graph.
+    // E:G if we have a graph with edges A → B, B → C, and C
+    // → A, then the transposed graph will have edges B → A, C → B, and A → C.
+    //steps: 
+    // 1. Create a new adjacency list for the transposed graph.
+    // 2. Loop through all the edges in the original graph and add the reversed edges to the transposed graph.
 
 
 
@@ -96,3 +167,7 @@ int main() {
 
     return 0;
 }
+
+
+//How many SCCs are there in the graph?
+
