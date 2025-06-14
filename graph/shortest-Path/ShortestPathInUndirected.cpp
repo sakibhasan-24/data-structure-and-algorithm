@@ -15,6 +15,28 @@ using namespace std;
 
 */
 
+vector<int>shortestPathFromSource(int V,vector<int> adj[],int source){
+    vector<bool>visited(V,false);
+    vector<int>distance(V,-1);
+    queue<int>q;
+    q.push(source);
+    visited[source]=true;
+    distance[source]=0;
+    while(!q.empty()){
+        int node=q.front();
+        q.pop();
+        for(int i=0;i<adj[node].size();i++){
+            int neighbor = adj[node][i];
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                distance[neighbor] = distance[node] + 1;
+                q.push(neighbor);
+            }
+        }
+    }
+    return distance;
+
+}
 int shortestPath(int V, vector<int> adj[], int source, int dest) {
     vector<bool>visited(V,false);
     vector<int>distance(V,-1);
@@ -54,5 +76,9 @@ int main() {
     int result = shortestPath(V, adj, source, destination);
     cout << "Shortest path from " << source << " to " << destination << " is: " << result << endl;
 
+     vector<int>res=shortestPathFromSource(V,adj,3);
+    for(int i=0;i<res.size();i++){
+        cout<<res[i]<<" ";
+    }
     return 0;
 }
