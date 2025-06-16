@@ -18,6 +18,7 @@ void bellmanFord(int V,vector<vector<int>>&edges,int src){
     cout << "-----------------------------\n";
 
     for(int i=0;i<V-1;i++){
+        bool track=false;
         for(int j=0;j<edges.size();j++){
             int u=edges[j][0];
             int v=edges[j][1];
@@ -25,14 +26,13 @@ void bellmanFord(int V,vector<vector<int>>&edges,int src){
             if(distance[v]>distance[u]+w){
                 distance[v]=distance[u]+w;
                 cout << "Updated dist[" << v << "] = " << distance[v] << " via node " << u << "\n";
+                track=true;
             }
         }
-        for (int j = 0; j < V; j++) {
-            cout << "dist[" << j << "] = " << distance[j] << endl;
-        }
-        cout << "-----------------------------\n";
-
-        
+        if (!track) {
+        cout << "No update in iteration " << i+ 1 << ", stopping early.\n";
+        break;
+    }
     }
     // Check for negative weight cycles
     for (auto edge : edges) {
