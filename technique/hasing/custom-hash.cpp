@@ -10,6 +10,7 @@ A fixed-size array of buckets
 #include<iostream>
 #include<vector>    
 #include<list>
+#include<algorithm>
 using namespace std;
 
 
@@ -85,6 +86,20 @@ class HashMap{
             cout<<"Not found"<<endl;
             return -1;
         }
+
+        void remove(string key){
+            int index=hash(key);
+            for(auto it=table[index].begin();it!=table[index].end();it++){
+                if(it->key==key){
+                    cout<<"Deleting at bucket #"<<index<<": ("<<key<<", "<<it->value<<")"<<endl;
+                    // it.key=" ";
+                    // it.value=-1;
+                    table[index].erase(it);
+                    return;
+                }
+            }
+            cout<<"Not found for delete"<<endl;
+        }
 };
 
 
@@ -99,12 +114,21 @@ int main()
         cout<<"hashmap is not empty"<<endl;
     }
     mp.insert("Mern",2);
+    
+    mp.insert("Mern",200);
+    mp.insert("Nerm",100);
     if(mp.isEmpty()){
         cout<<"hashmap is empty"<<endl;
     }else {
         cout<<"hashmap is not empty"<<endl;
     }
-    mp.insert("Mern",200);
-    mp.insert("Nerm",100);
     cout<<mp.search("Mern");
+    mp.remove("Mern");
+    mp.remove("Nerm");
+    if(mp.isEmpty()){
+        cout<<"hashmap is empty"<<endl;
+    }else {
+        cout<<"hashmap is not empty"<<endl;
+    }
+
 }
