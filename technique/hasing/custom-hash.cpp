@@ -74,6 +74,17 @@ class HashMap{
            cout << "Inserting at bucket #" << index << ": (" << key << ", " << value << ")\n";
            table[index].push_back({key,value});
         }
+        int search(string key){
+            int index=hash(key);
+            for(auto it=table[index].begin();it!=table[index].end();++it){
+                if(it->key==key){
+                    cout<<"Found something"<<endl;
+                    return it->value;
+                }
+            }
+            cout<<"Not found"<<endl;
+            return -1;
+        }
 };
 
 
@@ -95,4 +106,5 @@ int main()
     }
     mp.insert("Mern",200);
     mp.insert("Nerm",100);
+    cout<<mp.search("Mern");
 }
