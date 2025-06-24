@@ -35,6 +35,7 @@ class HashMap{
             for(int i=0;i<key.length();i++){
                 index+=key[i];//leet
             }
+            cout<<"index : "<<index<<endl;
             return index%SIZE;
         }
     public:
@@ -51,12 +52,47 @@ class HashMap{
             }
             return true;
         }
-}
+        //let's perform insert
+        //1->find the index
+        // check does this index has any value or not
+        //if not then insert the value
+        //if value then update
+        void insert(string key, int value){
+            int index=hash(key);
+            cout<<key<<endl;
+            // chech value is already exist in table or not
+            for(auto it = table[index].begin(); it!=table[index].end();++it){
+                if(it->key==key){
+                    cout << "Updating  at bucket #" << index << ": (" << key << ", " << value << ")\n";
+                    it->value=value;
+                    return;
+                }
+            }
+
+            //if not exist then insert the value
+            cout<<"First time create---"<<endl;
+           cout << "Inserting at bucket #" << index << ": (" << key << ", " << value << ")\n";
+           table[index].push_back({key,value});
+        }
+};
 
 
 
 int main()
 
 {
-
+    HashMap mp;
+    if(mp.isEmpty()){
+        cout<<"hashmap is empty"<<endl;
+    }else {
+        cout<<"hashmap is not empty"<<endl;
+    }
+    mp.insert("Mern",2);
+    if(mp.isEmpty()){
+        cout<<"hashmap is empty"<<endl;
+    }else {
+        cout<<"hashmap is not empty"<<endl;
+    }
+    mp.insert("Mern",200);
+    mp.insert("Nerm",100);
 }
