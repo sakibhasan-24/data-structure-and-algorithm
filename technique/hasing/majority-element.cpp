@@ -35,16 +35,16 @@ int majorityElement(vector<int>&nums){
     return -1;
 }
 
-Initialize an element m and a counter c with c = 0
-For each element x of the input sequence:
-If c = 0, then assign m = x and c = 1
-else if m = x, then assign c = c + 1
-else assign c = c − 1
-Return m
-  // {1,2,3,2,2}
-  m,c=0
-  for i=0  c==0 them m=1,c=1;
-  for i=1, m(1)=x(2) c=c+1=2
+// Initialize an element m and a counter c with c = 0
+// For each element x of the input sequence:
+// If c = 0, then assign m = x and c = 1
+// else if m = x, then assign c = c + 1
+// else assign c = c − 1
+// Return m
+//   // {1,2,3,2,2}
+//   m,c=0
+//   for i=0  c==0 them m=1,c=1;
+//   for i=1, m(1)=x(2) c=c+1=2
   int majorityElement(vector<int>&nums){
     int c=0,m=0;
     for(int x=0;x<nums.size();x++){
