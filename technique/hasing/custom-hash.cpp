@@ -28,6 +28,15 @@ class HashMap{
         int SIZE=10;
         vector<list<KeyValue>>table;
 
+        //hash function
+        int hash(string key){
+            //leet
+            int index=0;
+            for(int i=0;i<key.length();i++){
+                index+=key[i];//leet
+            }
+            return index%SIZE;
+        }
     public:
         HashMap(){
             table.resize(SIZE);
@@ -39,5 +48,5 @@ class HashMap{
 int main()
 
 {
-    
+
 }
