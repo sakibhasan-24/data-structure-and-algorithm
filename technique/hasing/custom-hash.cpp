@@ -41,6 +41,16 @@ class HashMap{
         HashMap(){
             table.resize(SIZE);
         }
+        //check hashmap is empty or not
+        bool isEmpty(){
+            // return table.empty();
+            for(int i=0;i<SIZE;i++){
+                if(!table[i].empty()){
+                    return false;
+                }
+            }
+            return true;
+        }
 }
 
 
