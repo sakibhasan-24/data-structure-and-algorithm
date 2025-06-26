@@ -32,3 +32,49 @@ int binarySearch(vector<int> &arr, int target) {
      return -1;  
     
 }
+
+// nums = [1, 2, 4, 4, 4, 5, 7]
+// target = 4
+
+// low=0
+// high=6
+//low+6/3=3
+//mid==3
+int lowerBound(vector<int> &nums, int target) {
+    int low=0;
+    int high=nums.size();
+    while(low<high){
+        int mid=low+(high-low)/2;
+        if(nums[mid]<target){
+            low=mid+1;
+        }else{
+            high=mid;
+        }
+    }
+    return low;
+}
+
+int UpperBound(vector<int> &nums, int target) {
+    int low=0;
+    int high=nums.size()-1;
+    while(low<high){
+        int mid=low+(high-low)/2;
+        if(nums[mid]<=target){
+            low=mid+1;
+        }else{
+            high=mid;
+        }
+    }
+    return low;
+}
+
+int main()
+
+
+{
+
+    vector<int> arr={1, 2, 4, 4, 4, 5, 7};
+    int target=4;
+    cout<<lowerBound(arr,target)<<endl;
+    cout<<UpperBound(arr,target)<<endl;
+}
