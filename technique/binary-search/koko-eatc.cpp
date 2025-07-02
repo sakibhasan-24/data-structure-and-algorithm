@@ -33,12 +33,13 @@ int minEatingSpeed(vector<int>& piles, int h) {
 
 int minEatingSpeed(vector<int>& piles, int h) {
     int left=1;
-    int right = *max_element(piles.begin(), piles.end());
-    int res=right;
+    int right = *max_element(piles.begin(), piles.end());// [3,6,7,11]
+    //11
+    int res=right;//11
 
 
     while(left<=right){
-        int mid=left+(right-left)/2;
+        int mid=left+(right-left)/2;//5
         int totalHours=0;
         for(int i=0;i<piles.size();i++){
             totalHours += ceil((double)piles[i]/mid);
