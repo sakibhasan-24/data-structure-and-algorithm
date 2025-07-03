@@ -14,28 +14,6 @@ Backtracking = Recursion + Choices + Undoing
 */
 
 
-/* 
-
-
-*/
-// Scenario:
-// You are a receptionist at a small hotel.
-// There are 3 available rooms, and 3 guests are arriving.
-
-// Each guest wants to book exactly one room, and no two guests can be in the same room.
-/* Goal:
-Assign every guest to a unique room in all possible valid ways.
-
-(You don’t know who prefers what room — you just want to try all valid assignments)
-Input:
-Guests: ["Alice", "Bob", "Charlie"]
-
-Rooms: [101, 102, 103]
-
-output 
-Alice → 101, Bob → 102, Charlie → 103  
-Alice → 101, Bob → 103, Charlie → 102  
-... */
 
 
 
