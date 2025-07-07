@@ -25,6 +25,7 @@ void mergeSort(vector<int>&nums,int left,int right){
     //mid =2
     //left side
     mergeSort(nums,left,mid);//
+    //test two
     mergeSort(nums,mid+1,right);
 
 }
