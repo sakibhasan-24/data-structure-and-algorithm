@@ -40,3 +40,13 @@ Next is (8, 9) → starts at 8 ≥ 7 →  Select
 
  Selected: (1,2), (3,4), (5,7), (8,9) → 4 activities
 */
+
+int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+
+    //sort them
+    sort(intervals.begin(), intervals.end(), [](vector<int>& a, vector<int>& b){
+        return a[1] < b[1];
+    })
+
+
+}
