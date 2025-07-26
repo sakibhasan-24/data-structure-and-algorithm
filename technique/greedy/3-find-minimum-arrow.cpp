@@ -3,6 +3,7 @@
 #include<algorithm>
 using namespace std;
 
+//we can convert is as lambda
 bool compare(vector<int> &a, vector<int> &b){
     return a[1] < b[1];
 }
