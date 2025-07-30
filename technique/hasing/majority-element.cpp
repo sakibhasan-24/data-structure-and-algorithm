@@ -45,6 +45,7 @@ int majorityElement(vector<int>&nums){
 //   m,c=0
 //   for i=0  c==0 them m=1,c=1;
 //   for i=1, m(1)=x(2) c=c+1=2
+// Boyer-Moore algo
   int majorityElement(vector<int>&nums){
     int c=0,m=0;
     for(int x=0;x<nums.size();x++){
