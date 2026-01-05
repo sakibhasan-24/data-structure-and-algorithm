@@ -1,0 +1,205 @@
+===============================
+DATA STRUCTURES & ALGORITHMS
+RECAP SYLLABUS (INTERVIEW FOCUS)
+===============================
+
+--------------------------------
+1. Complexity Analysis
+--------------------------------
+- Time Complexity
+  - Big-O, Big-Ω, Big-Θ
+  - Best, Average, Worst Case
+- Space Complexity
+- Common Complexity Classes
+  - O(1), O(log n), O(n)
+  - O(n log n), O(n^2), O(2^n)
+- Complexity Analysis
+  - Single loop
+  - Nested loops
+  - Recursion (recurrence relations)
+
+--------------------------------
+2. Arrays
+--------------------------------
+- Array Basics
+  - Traversal
+  - Insertion
+  - Deletion
+- Searching
+  - Linear Search
+  - Binary Search
+- Sorting (basic understanding)
+- Prefix Sum Technique
+- Sliding Window Technique
+- Two Pointer Technique
+- Subarrays vs Subsequences
+- In-place Array Modification
+- Kadane’s Algorithm
+
+--------------------------------
+3. Strings
+--------------------------------
+- String Basics
+- String Traversal
+- Character Frequency Count
+- Anagram Problems
+- Palindrome Check
+- String Matching Basics
+- Sliding Window on Strings
+
+--------------------------------
+4. Linked List
+--------------------------------
+- Singly Linked List
+- Doubly Linked List
+- Operations
+  - Insertion
+  - Deletion
+- Reverse a Linked List
+- Middle of Linked List
+- Cycle Detection (Floyd’s Algorithm)
+- Merge Two Sorted Lists
+
+--------------------------------
+5. Stack
+--------------------------------
+- Stack Implementation
+  - Array
+  - Linked List
+- Stack Operations
+- Applications
+  - Balanced Parentheses
+  - Infix / Prefix / Postfix
+- Monotonic Stack
+- Next Greater Element
+- Stack Using Queue
+
+--------------------------------
+6. Queue
+--------------------------------
+- Queue Implementation
+  - Array
+  - Linked List
+- Circular Queue
+- Deque
+- Queue Using Stack
+- Sliding Window Maximum
+
+--------------------------------
+7. Hashing
+--------------------------------
+- Hash Table Basics
+- Hash Functions
+- Collision Handling
+- Frequency Counting
+- HashMap / HashSet Applications
+- Two Sum Pattern
+
+--------------------------------
+8. Trees
+--------------------------------
+- Tree Terminology
+- Binary Tree
+- Binary Search Tree (BST)
+- Tree Traversals
+  - Inorder
+  - Preorder
+  - Postorder
+  - Level Order
+- Height of Tree
+- Diameter of Tree
+- Lowest Common Ancestor (LCA)
+- Balanced Binary Tree
+- Heap
+  - Min Heap
+  - Max Heap
+- Heap Applications
+
+--------------------------------
+9. Graphs
+--------------------------------
+- Graph Representation
+  - Adjacency List
+  - Adjacency Matrix
+- Graph Traversals
+  - BFS
+  - DFS
+- Cycle Detection
+  - Directed Graph
+  - Undirected Graph
+- Topological Sorting
+- Shortest Path Algorithms
+  - Dijkstra
+  - Bellman-Ford
+  - Floyd-Warshall
+- Minimum Spanning Tree
+  - Prim’s Algorithm
+  - Kruskal’s Algorithm
+- Grid Based Graph Problems
+
+--------------------------------
+10. Recursion
+--------------------------------
+- Recursion Basics
+- Base Case & Recursive Case
+- Recursion Tree
+- Tail Recursion
+- Backtracking
+  - Subsets
+  - Permutations
+  - Combinations
+  - N-Queens
+  - Sudoku Solver
+
+--------------------------------
+11. Dynamic Programming
+--------------------------------
+- DP Concepts
+  - Overlapping Subproblems
+  - Optimal Substructure
+- Memoization (Top-Down)
+- Tabulation (Bottom-Up)
+- 1D DP
+- 2D DP
+- Classic Problems
+  - Fibonacci
+  - 0/1 Knapsack
+  - Longest Increasing Subsequence (LIS)
+  - Longest Common Subsequence (LCS)
+  - Coin Change
+- DP on Trees
+- DP on Graphs
+- Space Optimization in DP
+
+--------------------------------
+12. Greedy Algorithms
+--------------------------------
+- Greedy Strategy
+- Activity Selection
+- Interval Scheduling
+- Fractional Knapsack
+- Huffman Coding
+
+--------------------------------
+13. Bit Manipulation
+--------------------------------
+- Bitwise Operators
+- Set, Clear, Toggle Bits
+- XOR Properties
+- Single Number Problems
+- Bit Masking
+- Subset Generation Using Bits
+
+--------------------------------
+14. Interview Preparation
+--------------------------------
+- Pattern Recognition
+- Dry Run Practice
+- Edge Case Handling
+- Code Optimization
+- Mock Interviews
+- Problem Revision Strategy
+
+===============================
+END OF SYLLABUS
+===============================
