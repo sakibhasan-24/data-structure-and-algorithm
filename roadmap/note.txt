@@ -19,7 +19,8 @@ RECAP SYLLABUS (INTERVIEW FOCUS)
   - Recursion (recurrence relations)
 
 --------------------------------
-2. Arrays
+2. Arrays 
+target at least solved 30 problems
 --------------------------------
 - Array Basics
   - Traversal
