@@ -89,3 +89,72 @@ int main()
      } 
 
 }
+
+
+/* 
+
+ ==============================
+2D MATRIX PRACTICE (ARRAY)
+==============================
+
+1. Input Handling
+- Took number of rows and columns from user
+- Created a 2D matrix
+- Filled matrix elements using nested loops
+
+2. Matrix Display
+- Printed the matrix row by row using nested loops
+
+3. Column-wise Sum
+- For each column:
+  - Initialized sum = 0
+  - Traversed all rows for that column
+  - Added matrix[row][col]
+- Printed sum of each column
+
+4. Row-wise Sum
+- For each row:
+  - Initialized sum = 0
+  - Traversed all columns for that row
+  - Added matrix[row][col]
+- Printed sum of each row
+
+5. Square Matrix Check
+- Checked if rows == columns
+- If not square, diagonals are not possible
+
+6. Primary Diagonal
+- Condition: row index == column index
+- Printed elements where r == c
+- Example: matrix[0][0], matrix[1][1], matrix[2][2]
+
+7. Secondary Diagonal
+- Column index calculated as: col - 1 - row
+- Printed elements:
+  - matrix[0][n-1]
+  - matrix[1][n-2]
+  - matrix[2][n-3]
+
+Concepts Used:
+- 2D Arrays
+- Nested Loops
+- Index Manipulation
+- Row-wise vs Column-wise Traversal
+- Diagonal Logic in Matrix
+
+Time Complexity:
+- Matrix input & display: O(rows × cols)
+- Row sum: O(rows × cols)
+- Column sum: O(rows × cols)
+- Diagonal traversal: O(n)
+
+Important Note:
+- Used array-based matrix
+- Variable Length Array works in some compilers but vector is safer in standard C++
+
+==============================
+END NOTE
+==============================
+
+
+*/
