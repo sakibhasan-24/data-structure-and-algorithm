@@ -79,7 +79,7 @@ int main()
     //1 2 3 mat[r=0][col 2]
     //4 5 6 mat[r=1]col[1]
     //7 8 9 mat [r=2] col[0]
-    //output 3 5 7 
+    //output 3 5 
      cout<<"Secondary Diagonal: "<<endl; 
      
      for(int r=0;r<row;r++){
