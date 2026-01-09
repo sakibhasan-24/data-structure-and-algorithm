@@ -32,7 +32,7 @@ int majorityElement(vector<int>&nums){
             return key;
         }
     }
-    return -1;
+    return;
 }
 
 // Initialize an element m and a counter c with c = 0
