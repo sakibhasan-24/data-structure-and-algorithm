@@ -65,3 +65,4 @@ int main()
     printArray(arr,sizeOfArr);
     return 0;
 }
+// not workign
