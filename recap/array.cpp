@@ -25,11 +25,26 @@ struct Result {
 };
 
 Result solveSmartScheduler(vector<int>& pods, int energy_limit) {
-    
+    // we will follow two pointers approach
+    int alice_idx = 0;
+    int bob_idx = pods.size() - 1;
+    int min_gap = INT_MAX;
+
+    while (alice_idx < bob_idx) {
+        int alice_energy = pods[alice_idx];
+        int bob_energy = pods[bob_idx];
+        int gap = abs(alice_energy - bob_energy);
+
+        if (gap <= energy_limit) {
+            min_gap = min(min_gap, gap);
+            alice_idx++;
+            bob_idx--;
+        }
+    }
 }
 
 int main() {
-    // Distances of pods from start: 0, 10, 20, 30, 40, 50, 60
+   
     vector<int> pods = {0, 15, 30, 45, 60, 75, 90};
     int energy_limit = 40; 
     Result r = solveSmartScheduler(pods, energy_limit);
