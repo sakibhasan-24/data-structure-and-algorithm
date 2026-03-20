@@ -25,7 +25,7 @@ struct Result {
 };
 
 Result solveSmartScheduler(vector<int>& pods, int energy_limit) {
-    // we will follow two pointers approach
+    //we will follow two pointers approach
     int alice_idx = 0;
     int bob_idx = pods.size() - 1;
     int min_gap = INT_MAX;
