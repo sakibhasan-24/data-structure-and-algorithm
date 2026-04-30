@@ -12,12 +12,23 @@ int findMajority(vector<int>& nums) {
         }
         couunt += (num == candidate) ? 1 : -1;
     }
+
+    int actualCount = 0;
+    for (int num : nums) {
+        if (num == candidate) {
+            actualCount++;
+        }
+        if(actualCount > nums.size()/2){
+            return candidate;
+        }
+        return -1;
+    }
     return candidate;
 }
 
 int main()
 {
-    vector<int> nums = {3, 3, 4, 2, 3, 3, 1,1,1,1,1,1};// 3 appears 4 times, 4 appears 2 times, 2 appears 1 time
+    vector<int> nums = {3,2};// 3 appears 4 times, 4 appears 2 times, 2 appears 1 time
     int result = findMajority(nums);
     
     if (result != -1) {
