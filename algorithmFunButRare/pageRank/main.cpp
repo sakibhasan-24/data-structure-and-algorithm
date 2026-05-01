@@ -4,27 +4,33 @@
 
 using namespace std;
 int findMajority(vector<int>& nums) {
-    int couunt=0;
+    int count = 0;
     int candidate = 0;
+
+    //  Find candidate
     for (int num : nums) {
-        if (couunt == 0) {
+        if (count == 0) {
             candidate = num;
         }
-        couunt += (num == candidate) ? 1 : -1;
+        count += (num == candidate) ? 1 : -1;
     }
 
+    //  Verify candidate
     int actualCount = 0;
     for (int num : nums) {
         if (num == candidate) {
             actualCount++;
         }
-        if(actualCount > nums.size()/2){
-            return candidate;
-        }
-        return -1;
     }
-    return candidate;
+
+    if (actualCount > nums.size() / 2) {
+        return candidate;
+    }
+
+    return -1;
 }
+// this is Boyer -more majority algorithm
+
 
 int main()
 {
