@@ -72,7 +72,33 @@ class Node {
             this->next = nullptr;
         }
 }
+
+class BurgerTrain {
+
+    public:
+        Node* head;
+        BurgerTrain() {
+            head = nullptr;
+
+        }
+    void insertAtEnd(int orderID, string burgerName, double price) {
+        Node* newNode=new Node(orderID, burgerName, price);
+        if(head == nullptr) {
+            head = newNode;
+            return;
+        }
+        // if already have nodes
+        //1->2->3->4->5->6->nullptr
+        Node* temp = head;
+        while(temp->next != nullptr) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+        delete temp; // delete temp to avoid memory leak
+    }
+}
 int main() {
     
 
+    BurgerTrain train;
 }
