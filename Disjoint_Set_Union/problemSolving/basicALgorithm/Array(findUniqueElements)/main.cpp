@@ -1,6 +1,7 @@
 /* 
 Find the element
- that appears once in an array of integers and every other element appears twice
+that appears once
+ in an array of integers and every other element appears twice
 
 */
 
@@ -9,10 +10,10 @@ Find the element
 using namespace std;
 
 int findUnique(vector<int> &arr){
-    int ans;
+    int ans=arr[0];
     int count=0;
     // 3 1 5 1 5 7 9 7 9 
-    for(int i=0;i<arr.size();i++){
+    for(int i=1;i<arr.size();i++){
         if(arr[i]==ans){
             count++;
         }
@@ -21,7 +22,7 @@ int findUnique(vector<int> &arr){
     if(count==1){
         return ans;
     }
-   
+    return 0;
 }
 
 
