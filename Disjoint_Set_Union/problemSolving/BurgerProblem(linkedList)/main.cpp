@@ -75,8 +75,10 @@ class Node {
 
 class BurgerTrain {
 
-    public:
+    private:
         Node* head;
+    public:
+       
         BurgerTrain() {
             head = nullptr;
 
@@ -94,7 +96,25 @@ class BurgerTrain {
             temp = temp->next;
         }
         temp->next = newNode;
-        delete temp; // delete temp to avoid memory leak
+     
+    }
+
+    // vip order(beginner insert)
+    void insertAtBegin(int orderID, string burgerName, double price) {
+        Node* newNode = new Node(orderID, burgerName, price);
+        if(head == nullptr) {
+            head = newNode;
+            return;
+        }
+         // if already have nodes
+        //1->2->3->4->5->6->nullptr
+        //1 is now temp
+        //head=newNode(orderID, burgerName, price);
+        //head->next=temp;
+        Node* temp = head;
+        head = newNode;
+        head->next = temp;
+    
     }
 }
 int main() {
