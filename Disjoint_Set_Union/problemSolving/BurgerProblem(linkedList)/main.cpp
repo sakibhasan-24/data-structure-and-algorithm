@@ -56,69 +56,367 @@ Use slow and fast pointer technique. */
 
 #include <iostream>
 #include <string>
+#include <typeinfo>
 using namespace std;
 
 class Node {
-    public:
-        int orderID;
-        string burgerName;
-        double price;
-        Node* next;
+public:
+    int orderID;
+    string burgerName;
+    double price;
+    Node* next;
 
-        Node(int orderID, string burgerName, double price) {
-            this->orderID = orderID;
-            this->burgerName = burgerName;
-            this->price = price;
-            this->next = nullptr;
-        }
-}
+    Node(int orderID, string burgerName, double price) {
+        this->orderID = orderID;
+        this->burgerName = burgerName;
+        this->price = price;
+        next = nullptr;
+    }
+};
 
 class BurgerTrain {
 
-    private:
-        Node* head;
-    public:
-       
-        BurgerTrain() {
-            head = nullptr;
+private:
+    Node* head;
 
+public:
+
+    BurgerTrain() {
+        head = nullptr;
+    }
+
+    // Destructor
+    ~BurgerTrain() {
+
+        Node* temp;
+
+        while(head != nullptr) {
+            temp = head;
+            head = head->next;
+            delete temp;
         }
+    }
+
+    // Insert at End
     void insertAtEnd(int orderID, string burgerName, double price) {
-        Node* newNode=new Node(orderID, burgerName, price);
+
+        Node* newNode = new Node(orderID,burgerName,  price);
+
         if(head == nullptr) {
             head = newNode;
             return;
         }
-        // if already have nodes
-        //1->2->3->4->5->6->nullptr
+
         Node* temp = head;
+
         while(temp->next != nullptr) {
             temp = temp->next;
         }
+
         temp->next = newNode;
-     
     }
 
-    // vip order(beginner insert)
-    void insertAtBegin(int orderID, string burgerName, double price) {
-        Node* newNode = new Node(orderID, burgerName, price);
-        if(head == nullptr) {
-            head = newNode;
+    // VIP Insert at Beginning
+    void insertAtBegin(int orderID,string burgerName,  double price) {
+        Node* newNode = new Node(orderID,  burgerName, price);
+
+        newNode->next = head;
+        head = newNode;
+    }
+    // Insert at Position
+    void insertAtPosition(int position,int orderID, string burgerName, double price) {
+
+        // Position validation
+        if(position <= 0) {
+            cout << "Invalid Position\n";
             return;
         }
-         // if already have nodes
-        //1->2->3->4->5->6->nullptr
-        //1 is now temp
-        //head=newNode(orderID, burgerName, price);
-        //head->next=temp;
+        // Beginning insert
+        if(position == 1) {
+            insertAtBegin(orderID, burgerName,price);
+
+            return;
+        }
+
         Node* temp = head;
-        head = newNode;
-        head->next = temp;
-    
+
+        // Move to previous node
+        for(int i = 1;
+            i < position - 1;
+            i++) {
+
+            if(temp == nullptr) {
+                cout << "Invalid Position\n";
+                return;
+            }
+
+            temp = temp->next;
+        }
+
+        if(temp == nullptr) {
+            cout << "Invalid Position\n";
+            return;
+        }
+        Node* newNode =
+         new Node(orderID,burgerName, price);
+
+        newNode->next = temp->next;
+        temp->next = newNode;
+
+        cout << "Order inserted successfully.\n";
     }
-}
+
+    // Display
+    void display() {
+
+        if(head == nullptr) {
+            cout << "No Orders Available\n";
+            return;
+        }
+
+        Node* temp = head;
+
+        cout << "\n🍔 Orders List:\n";
+
+        while(temp != nullptr) {
+
+            cout << "ID: "<< temp->orderID<< " | Burger: "<< temp->burgerName<< " | Price: $" << temp->price << endl;
+
+            temp = temp->next;
+        }
+    }
+
+    // Count Orders
+    void countOrders() {
+
+        int count = 0;
+
+        Node* temp = head;
+
+        while(temp != nullptr) {
+            count++;
+            temp = temp->next;
+        }
+        cout << "Total Orders: "  << count<< endl;
+    }
+
+    // Search By ID
+    void searchByID(int orderID) {
+
+        Node* temp = head;
+
+        while(temp != nullptr) {
+
+            if(temp->orderID == orderID) {
+
+                cout << "\nOrder Found:\n";
+                cout << "ID: " << temp->orderID<< endl;
+                cout << "Burger: " << temp->burgerName << endl;
+
+                cout << "Price: $" << temp->price   << endl;
+
+                return;
+            }
+
+            temp = temp->next;
+        }
+
+        cout << "Order not found.\n";
+    }
+
+    // Delete by ID
+    void deleteById(int id) {
+
+        if(head == nullptr) {
+            cout << "List is empty.\n";
+            return;
+        }
+
+        // Delete head
+        if(head->orderID == id) {
+            Node* deleteNode = head;
+          head = head->next;
+            delete deleteNode;
+            cout << "Order deleted successfully.\n";
+            return;
+        }
+
+        Node* temp = head;
+
+        while(temp->next != nullptr) {
+
+            if(temp->next->orderID == id) {
+                Node* deleteNode =  temp->next;
+                temp->next =  temp->next->next;
+                delete deleteNode;
+                cout << "Order deleted successfully.\n";
+                return;
+            }
+
+            temp = temp->next;
+        }
+
+        cout << "Order not found.\n";
+    }
+
+    // Reverse Linked List
+    void reverseOrders() {
+
+        Node* prev = nullptr;
+        Node* current = head;
+        Node* nextNode = nullptr;
+
+        while(current != nullptr) {
+            nextNode = current->next;
+            current->next = prev;
+            prev = current;
+            current = nextNode;
+        }
+
+        head = prev;
+        cout << "Orders reversed successfully.\n";
+    }
+};
+
 int main() {
-    
 
     BurgerTrain train;
+
+    int choice;
+
+    do {
+
+        cout << "\n==========  Burger Train ==========\n";
+
+        cout << "1. Add Order\n";
+        cout << "2. VIP Order\n";
+        cout << "3. Insert at Position\n";
+        cout << "4. Delete Order\n";
+        cout << "5. Search Order\n";
+        cout << "6. Display Orders\n";
+        cout << "7. Count Orders\n";
+        cout << "8. Reverse Orders\n";
+        cout << "9. Exit\n";
+
+        cout << "Enter Choice: ";
+        if (!(cin >> choice)) {
+        cout << "❌ Invalid Input! Please enter a number.\n";
+    
+    cin.clear();          
+    cin.ignore(1000, '\n'); 
+    continue;             
+}
+      
+        
+        int id;
+        string name;
+        double price;
+        int position;
+
+        switch(choice) {
+
+        case 1:
+
+            cout << "Enter ID: ";
+            cin >> id;
+
+            cin.ignore();
+
+            cout << "Enter Burger Name: ";
+            getline(cin, name);
+
+            cout << "Enter Price: ";
+            cin >> price;
+
+            train.insertAtEnd(id, name,  price);
+
+            break;
+
+        case 2:
+
+            cout << "Enter VIP ID: ";
+            cin >> id;
+
+            cin.ignore();
+
+            cout << "Enter Burger Name: ";
+            getline(cin, name);
+
+            cout << "Enter Price: ";
+            cin >> price;
+
+            train.insertAtBegin(id, name,  price);
+
+            break;
+
+        case 3:
+
+            cout << "Enter Position: ";
+            cin >> position;
+
+            cout << "Enter ID: ";
+            cin >> id;
+
+            cin.ignore();
+
+            cout << "Enter Burger Name: ";
+            getline(cin, name);
+
+            cout << "Enter Price: ";
+            cin >> price;
+
+            train.insertAtPosition(position, id,name,price);
+
+            break;
+
+        case 4:
+
+            cout << "Enter ID to Delete: ";
+            cin >> id;
+
+            train.deleteById(id);
+
+            break;
+
+        case 5:
+
+            cout << "Enter ID to Search: ";
+            cin >> id;
+
+            train.searchByID(id);
+
+            break;
+
+        case 6:
+
+            train.display();
+
+            break;
+
+        case 7:
+
+            train.countOrders();
+
+            break;
+
+        case 8:
+
+            train.reverseOrders();
+
+            break;
+
+        case 9:
+
+            cout << "Exiting Program...\n";
+
+            break;
+
+        default:
+
+            cout << "Invalid Choice.\n";
+        }
+
+    } while(choice != 9);
+
+    return 0;
 }
