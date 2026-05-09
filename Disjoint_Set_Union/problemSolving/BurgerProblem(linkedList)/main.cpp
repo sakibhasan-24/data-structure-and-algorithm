@@ -96,10 +96,24 @@ public:
             delete temp;
         }
     }
+    // duplicate checker...
+    bool duplicateChecker(int orderID) {
+        Node* temp = head;
+        while(temp != nullptr) {
+            if(temp->orderID == orderID) {
+                return true;
+            }
+            temp = temp->next;
+        }
+        return false;
+    }
 
     // Insert at End
     void insertAtEnd(int orderID, string burgerName, double price) {
-
+        if(duplicateChecker(orderID)) {
+            cout << "Duplicate Order ID" << endl;
+            return;
+        }
         Node* newNode = new Node(orderID,burgerName,  price);
 
         if(head == nullptr) {
@@ -118,6 +132,10 @@ public:
 
     // VIP Insert at Beginning
     void insertAtBegin(int orderID,string burgerName,  double price) {
+        if(duplicateChecker(orderID)) {
+            cout << "Duplicate Order ID" << endl;
+            return;
+        }
         Node* newNode = new Node(orderID,  burgerName, price);
 
         newNode->next = head;
@@ -125,7 +143,10 @@ public:
     }
     // Insert at Position
     void insertAtPosition(int position,int orderID, string burgerName, double price) {
-
+        if(duplicateChecker(orderID)) {
+            cout << "Duplicate Order ID" << endl;
+            return;
+        }
         // Position validation
         if(position <= 0) {
             cout << "Invalid Position\n";
@@ -206,21 +227,15 @@ public:
         Node* temp = head;
 
         while(temp != nullptr) {
-
             if(temp->orderID == orderID) {
-
                 cout << "\nOrder Found:\n";
                 cout << "ID: " << temp->orderID<< endl;
                 cout << "Burger: " << temp->burgerName << endl;
-
                 cout << "Price: $" << temp->price   << endl;
-
                 return;
             }
-
             temp = temp->next;
         }
-
         cout << "Order not found.\n";
     }
 
