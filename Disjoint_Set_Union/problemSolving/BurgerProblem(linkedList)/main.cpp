@@ -57,6 +57,7 @@ Use slow and fast pointer technique. */
 #include <iostream>
 #include <string>
 #include <typeinfo>
+#include<algorithm> 
 using namespace std;
 
 class Node {
@@ -291,6 +292,30 @@ public:
         head = prev;
         cout << "Orders reversed successfully.\n";
     }
+
+
+    // sorting linked list by price
+    void bubbleSort() {
+        // 99->32->102-43
+        //if only one item and no itemssss
+        if(head == nullptr || head->next == nullptr) {
+            return;
+        }
+
+        for(Node* i = head; i->next != nullptr; i = i->next) {
+            for(Node* j = head; j->next != nullptr; j = j->next) {
+                if(j->price > j->next->price) {
+                    swap(j->price, j->next->price);
+                    swap(j->orderID, j->next->orderID);
+                    swap(j->burgerName, j->next->burgerName);
+                }
+
+                
+            }
+        }
+        display();
+        cout << "✅ Sorted using Bubble Sort (For Loop).\n";
+    }
 };
 
 int main() {
@@ -403,9 +428,16 @@ int main() {
             break;
 
         case 6:
-
-            train.display();
-
+            int sortChoice;
+            cout << "\n--- Display Options ---\n";
+            cout << "1. Default (As entered)\n";
+           
+            cout << "2. Sort by Price (Bubble Sort)\n";
+            cout << "3. Sort by Price (Insertion Sort - Upcoming)\n";
+            cout << "Enter Choice: ";
+            cin >> sortChoice;
+             if(sortChoice==1) train.display();
+            if(sortChoice==2) train.bubbleSort();
             break;
 
         case 7:
