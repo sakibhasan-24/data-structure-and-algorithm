@@ -301,18 +301,36 @@ public:
         if(head == nullptr || head->next == nullptr) {
             return;
         }
-
-        for(Node* i = head; i->next != nullptr; i = i->next) {
-            for(Node* j = head; j->next != nullptr; j = j->next) {
-                if(j->price > j->next->price) {
-                    swap(j->price, j->next->price);
-                    swap(j->orderID, j->next->orderID);
-                    swap(j->burgerName, j->next->burgerName);
+        Node* end= nullptr;
+        while(end != head) {
+            bool isSwapped = false;
+            for (Node* current=head;current->next!=end;current=current->next){
+                if(current->price > current->next->price) {
+                    swap(current->price, current->next->price);
+                    swap(current->burgerName, current->next->burgerName);
+                    swap(current->orderID,current->next->orderID);
+                    isSwapped = true;
                 }
-
-                
             }
+            Node* temp = head;
+            while(temp->next != nullptr) {
+                temp = temp->next;
+            }
+            end=temp;
+            if(!isSwapped) {
+                break;
+            }
+
         }
+        // for(Node* i = head; i->next != nullptr; i = i->next) {
+        //     for(Node* j = head; j->next != nullptr; j = j->next) {
+        //         if(j->price > j->next->price) {
+        //             swap(j->price, j->next->price);
+        //             swap(j->orderID, j->next->orderID);
+        //             swap(j->burgerName, j->next->burgerName);
+        //         }
+        //     }
+        // }
         display();
         cout << "✅ Sorted using Bubble Sort (For Loop).\n";
     }
