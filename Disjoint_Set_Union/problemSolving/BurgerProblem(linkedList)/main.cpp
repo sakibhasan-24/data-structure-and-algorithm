@@ -334,6 +334,29 @@ public:
         display();
         cout << "✅ Sorted using Bubble Sort (For Loop).\n";
     }
+
+    // sort linked list using selection sort
+    void selectionSort(){
+        if(head == nullptr || head->next == nullptr) {
+            return;
+        }
+        for(Node* current=head;current->next!=nullptr;current=current->next){
+            Node* maxNode=current;
+            for(Node* temp=current->next;temp!=nullptr;temp=temp->next){
+                if(temp->price > maxNode->price){
+                    maxNode=temp;
+                }
+            }
+            if(maxNode!=current){
+                swap(maxNode->price,current->price);
+                swap(maxNode->orderID,current->orderID);
+                swap(maxNode->burgerName,current->burgerName);
+            }
+        }
+        display();
+        cout << "✅ Sorted using Selection Sort (For Loop).\n";
+    }
+
 };
 
 int main() {
@@ -456,6 +479,7 @@ int main() {
             cin >> sortChoice;
              if(sortChoice==1) train.display();
             if(sortChoice==2) train.bubbleSort();
+            if(sortChoice==3) train.selectionSort();
             break;
 
         case 7:
