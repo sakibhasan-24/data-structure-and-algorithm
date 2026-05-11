@@ -357,6 +357,37 @@ public:
         cout << "✅ Sorted using Selection Sort (For Loop).\n";
     }
 
+    // sort linked list using insertion sort
+    void insertionSort(){
+        if(head==nullptr || head->next==nullptr){
+            display();
+            return;
+        }
+        Node* sorted=nullptr;
+        Node* current=head;
+        while(current!=nullptr){
+            Node* nextNode=current->next;
+            if(sorted==nullptr || sorted->price >= current->price){
+                current->next=sorted;
+                sorted=current;
+            }
+            else {
+                Node* temp=sorted;
+                for(; temp->next!=nullptr && temp->next->price<current->price; temp=temp->next)
+              {
+
+
+                }
+                current->next=temp->next;
+                temp->next=current;
+            }
+            current=nextNode;
+        }
+        head=sorted;
+        display();
+        cout << "✅ Sorted using Insertion Sort.\n";
+    }
+
 };
 
 int main() {
