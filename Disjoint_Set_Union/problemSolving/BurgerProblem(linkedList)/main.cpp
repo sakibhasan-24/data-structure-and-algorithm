@@ -505,12 +505,14 @@ int main() {
             cout << "1. Default (As entered)\n";
            
             cout << "2. Sort by Price (Bubble Sort)\n";
-            cout << "3. Sort by Price (Insertion Sort - Upcoming)\n";
+            cout << "3. Sort by Price (SelectionSort - Upcoming)\n";
+            cout << "4. Sort by Price (Merge Sort)\n";
             cout << "Enter Choice: ";
             cin >> sortChoice;
              if(sortChoice==1) train.display();
             if(sortChoice==2) train.bubbleSort();
             if(sortChoice==3) train.selectionSort();
+            if(sortChoice==4) train.mergeSort();
             break;
 
         case 7:
