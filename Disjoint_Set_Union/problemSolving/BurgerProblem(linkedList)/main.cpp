@@ -513,6 +513,7 @@ int main() {
             if(sortChoice==2) train.bubbleSort();
             if(sortChoice==3) train.selectionSort();
             if(sortChoice==4) train.mergeSort();
+            if(sortChoice==5) train.insertionSort();
             break;
 
         case 7:
